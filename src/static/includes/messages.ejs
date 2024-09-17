@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="../css/messages.css" />
+<% if(errors.length > 0){ %>
+<div class="error">
+  <div class="alert alert-danger">
+    <% errors.forEach(error => { %> <%= error%><br /><br />
+    <% }); %>
+  </div>
+</div>
+<% }%> <% if(success.length > 0){ %>
+<div class="error success">
+  <div class="alert alert-success">
+    <% success.forEach(successMsg => { %> <%= successMsg%><br />
+    <% }); %>
+  </div>
+</div>
+<% }%>

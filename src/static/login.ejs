@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+  </head>
+  <body>
+    <section class="container">
+      <div class="welcome">
+        <h1>Sign In</h1>
+        <div>Bem-vindo!</div>
+      </div>
+      <%- include('includes/messages') %>
+      <form class="login" action="/" method="post">
+        <input placeholder="Email" type="text" class="user" name="email" />
+        <input
+          placeholder="Senha"
+          type="password"
+          name="password"
+          class="password"
+        />
+        <input type="text" name="_csrf" value="<%= csrfToken %>" />
+        <button class="sign-in">Entrar</button>
+      </form>
+
+      <div class="options">
+        <a href="http://">Cadastrar</a>
+        <a href="http://">Esqueci a senha</a>
+      </div>
+    </section>
+  </body>
+</html>

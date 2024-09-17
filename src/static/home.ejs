@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/home.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('includes/nav') %>
+    <div class="container">
+      <div class="header">
+        <h1>Agenda</h1>
+        <h3 class="text-center">Seus contatos estão abaixo</h3>
+      </div>
+      <% if(!user) { %>
+      <div>nao esta logado</div>
+      <% } %> <%- include('includes/messages') %> <% if(user) { %>
+      <div>Esta logado</div>
+      <% } %> <%- include('includes/messages') %>
+      <div class="responsive-table">
+        <table class="table">
+          <tr class="custom-border">
+            <td>Lucas</td>
+            <td>Assis</td>
+            <td>11945863252</td>
+            <td>lucasassis@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Lucas</td>
+            <td>Assis</td>
+            <td>11945863252</td>
+            <td>lucasassis@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Lucas</td>
+            <td>Assis</td>
+            <td>11945863252</td>
+            <td>lucasassis@gmail.com</td>
+          </tr>
+          <tr>
+            <td>Lucas</td>
+            <td>Assis</td>
+            <td>11945863252</td>
+            <td>lucasassis@gmail.com</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
