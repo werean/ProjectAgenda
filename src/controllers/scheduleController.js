@@ -16,10 +16,19 @@ exports.schedule = async function (req, res) {
     }
     req.flash("success", "Agendamento realizado!");
     req.session.save(function () {
-      res.redirect("/contato");
+      res.redirect(`/agendamento/edit/${schedule.user._id}`);
+      return;
     });
   } catch (e) {
     console.log(e);
     res.render("error");
   }
+};
+exports.editSchedule = async function (req, res) {
+  if (!req.params.id) return res.render("error");
+  const user = await Schedule.findById(req.params.id);
+  if (!user) return res.render("error");
+  res.render("schedule", {
+    user,
+  });
 };

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="/css/register.css" />
     <title>Novo contato</title>
   </head>
   <body>
@@ -11,11 +11,31 @@
     <section class="container">
       <h1 class="text-center">Faça seu agendamento</h1>
       <%- include('includes/messages') %>
-      <form class="forms" action="/contato/create" method="POST">
-        <input type="text" name="name" placeholder="Nome" />
-        <input type="number" name="phone" placeholder="Numero do celular" />
-        <input type="text" name="hour" placeholder="Horario do agendamento" />
-        <input type="text" name="date" placeholder="Data do agendamento" />
+      <form class="forms" action="/agendamento/create" method="POST">
+        <input
+          type="text"
+          value="<%= user.name %>"
+          name="name"
+          placeholder="Nome"
+        />
+        <input
+          type="number"
+          value="<%= user.phone %>"
+          name="phone"
+          placeholder="Numero do celular"
+        />
+        <input
+          type="text"
+          value="<%= user.hour %>"
+          name="hour"
+          placeholder="Horario do agendamento"
+        />
+        <input
+          type="text"
+          value="<%= user.date %>"
+          name="date"
+          placeholder="Data do agendamento"
+        />
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button type="submit">Cadastrar</button>
       </form>

@@ -12,8 +12,6 @@
   border: var(--error-border) solid 1px;
   border-radius: 5px;
   padding: 15px;
-  width: 50%;
-  text-align: center;
   background-color: var(--error-background);
   color: var(--error-color);
 }
