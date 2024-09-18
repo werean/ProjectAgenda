@@ -5,8 +5,8 @@ exports.registerPage = (req, res) => {
 };
 exports.register = async function (req, res) {
   try {
-    const register = new Register(req.body); // Cria uma nova instância da classe Login com os dados enviados no corpo da requisição (req.body).
-    await register.registerValidity(); // Chama o método 'registerValidity' da instância de Login para validar e registrar o usuário.
+    const register = new Register(req.body); // Cria uma nova instância da classe Register com os dados enviados no corpo da requisição (req.body).
+    await register.registerCreate(); // Chama o método 'registerValidity' da instância de Login para validar e registrar o usuário.
     if (register.errors.length > 0) {
       // Se houver erros após a execução do método register (verifica o array de errors).
       req.flash("errors", register.errors); // Adiciona os erros à sessão do usuário usando flash messages (para mostrar mensagens temporárias).
@@ -26,6 +26,6 @@ exports.register = async function (req, res) {
   } catch (e) {
     // caso tenha algum erro, exibe o erro no console e redireciona para a pagina de erro
     console.log(e);
-    return res.render("404");
+    return res.render("error");
   }
 };

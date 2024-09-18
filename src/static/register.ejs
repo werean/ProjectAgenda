@@ -7,6 +7,7 @@
     <title>Register</title>
   </head>
   <body>
+    <%- include('includes/nav') %>
     <section class="container">
       <h1>Realize seu cadastro!</h1>
       <%- include('includes/messages') %>
@@ -20,7 +21,7 @@
           id=""
         />
         <input
-          class="email"
+          class="number"
           placeholder="Seu E-mail aqui"
           type="email"
           name="email"
@@ -43,7 +44,7 @@
           type="password"
           name="confirmPassword"
         />
-        <input type="text" name="_csrf" value="<%= csrfToken %>" />
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
 
         <button type="submit">Cadastrar</button>
       </form>

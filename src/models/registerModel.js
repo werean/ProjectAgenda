@@ -1,7 +1,6 @@
-const mongoose = require("mongoose"); // estabelece conexão com mongodb
 const validator = require("validator"); //valida email entre outras coisas
 const bcryptjs = require("bcryptjs"); // incripta a senha para nao mandar a senha real para o banco de dados
-const mongoSchema = require("./mongoSchema");
+const { mongooseModel } = require("./mongoSchemaModel");
 
 class Register {
   // aqui estou instanciando as coisas que eu vou receber
@@ -11,17 +10,17 @@ class Register {
     this.user = null;
   }
 
-  async registerValidity() {
+  async registerCreate() {
     this.registerValidation(); //verifico se o email informado é valido
-    if (this.errors > 0) return; // se existir erros eu paro a execução
+    if (this.errors.length > 0) return; // se existir erros eu paro a execução
     await this.emailExist(); //verifico no banco se o email já esta cadastrado
     if (this.errors.length > 0) return; // verifico novamente se existe erros
     const salt = bcryptjs.genSaltSync(); //instancio o bcrypt
     this.body.password = bcryptjs.hashSync(this.body.password, salt); //criptografo a senha com a instancia a cima
-    this.user = await mongoSchema.create(this.body); //crio no banco o que foi informado no body
+    this.user = await mongooseModel.create(this.body); //crio no banco o que foi informado no body
   }
   async emailExist() {
-    const findEmail = await mongoSchema.findOne({ email: this.body.email }); //aqui ele procura na coleção Registered se o this.body.email que está sendo enviado já existe na coleção
+    const findEmail = await mongooseModel.findOne({ email: this.body.email }); //aqui ele procura na coleção Registered se o this.body.email que está sendo enviado já existe na coleção
     if (findEmail) this.errors.push("E-mail já cadastrado.");
   }
   registerValidation() {

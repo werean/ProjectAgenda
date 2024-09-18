@@ -1,24 +1,24 @@
+<link rel="stylesheet" href="../../css/nav.css" />
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Agenda</a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <% if (!user) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/login/index">Entrar</a>
-      </li>
-      <% } %>
-      <!-- Remover ou adicionar conteúdo ao link vazio -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">Algum link</a>
-      </li>
-    </ul>
-  </div>
+  <ul class="navbar">
+    <% if (!user) { %> <% if(path !== "/") { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/">Entrar</a>
+    </li>
+    <% } %> <% if(path !== "/register") { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/register">Registrar</a>
+    </li>
+    <% } %> <% } %> <% if (user) { %>
+    <li class="nav-item">
+      <a class="nav-link" href="/home">Agendamentos</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/contato">Novo agendamento</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/logout">Sair</a>
+    </li>
+    <% } %>
+  </ul>
 </nav>

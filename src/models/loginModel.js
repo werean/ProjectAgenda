@@ -1,7 +1,6 @@
-const mongoose = require("mongoose");
 const validator = require("validator");
 const bcryptjs = require("bcryptjs");
-const mongoSchema = require("./mongoSchema");
+const { mongooseModel } = require("./mongoSchemaModel");
 
 class Login {
   // aqui eu criei uma classe que irá receber o req.body que vem lá do controller do login, ele será responsavel por apenas receber o corpo da requisição.
@@ -14,7 +13,7 @@ class Login {
   async logged() {
     this.validity();
     if (this.errors.length > 0) return;
-    this.user = await mongoSchema.findOne({ email: this.body.email });
+    this.user = await mongooseModel.findOne({ email: this.body.email });
     if (!this.user) {
       this.errors.push("Usuário ou senha inválido.");
       return;
@@ -35,13 +34,13 @@ class Login {
     const salt = bcryptjs.genSaltSync();
     this.body.password = bcryptjs.hashSync(this.body.password, salt);
     try {
-      this.user = await mongoSchema.create(this.body);
+      this.user = await mongooseModel.create(this.body);
     } catch (e) {
       console.log(e);
     }
   }
   async userExists() {
-    const user = await mongoSchema.findOne({ email: this.body.email });
+    const user = await mongooseModel.findOne({ email: this.body.email });
     if (user) this.errors.push("Usuario já existe");
   }
   validity() {

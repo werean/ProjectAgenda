@@ -1,0 +1,22 @@
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+nav {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.753);
+  display: flex;
+  justify-content: flex-end;
+}
+
+ul {
+  list-style: none;
+  display: flex; /* Alteração aqui */
+  justify-content: space-around;
+}
+li {
+  padding: 0 10px;
+}
+a {
+  text-decoration: none;
+  color: aliceblue;
+}

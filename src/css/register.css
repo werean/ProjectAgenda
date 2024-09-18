@@ -2,30 +2,49 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .container {
   width: 50%;
-  margin: 10px auto;
+  margin: 100px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container input {
+h1 {
+  margin-bottom: 10px;
+}
+input {
   display: flex;
   padding: 10px;
-
   width: 400px;
-  margin: 20px 0;
+  margin: 10px 0;
+  border: solid 1px;
+  border-radius: 5px;
 }
-.container .forms {
+.forms {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container button {
+button {
+  margin-top: 10px;
   padding: 6px;
   width: 150px;
   border: solid 1px;
-  border-radius: 2px;
+  border-radius: 3px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.options {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+.options a {
+  text-decoration: none;
+  color: rgb(20, 37, 131);
 }
