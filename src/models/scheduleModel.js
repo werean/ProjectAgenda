@@ -46,4 +46,11 @@ Schedule.prototype.cleanUp = function () {
     date: this.body.date,
   };
 };
+
+Schedule.prototype.edit = async function (id) {
+  if (typeof id !== "string") return;
+  this.validity();
+  if (this.errors.length > 0) return;
+  this.user = await scheduleSchema.findByIdAndUpdate(id, this.body, { new: true });
+};
 module.exports = Schedule;

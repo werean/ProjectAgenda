@@ -9,12 +9,9 @@ const { loginRequired, isLogged } = require("./src/middlewares/middleware");
 //outras rotas
 route.get("/home", loginRequired, homeController.homePage); // aqui estou passando o middleware loginRequired antes dele mover para a rota que eu quero para que ele verifique se o usuario está logado
 route.get("/agendamento", loginRequired, scheduleController.schedulePage);
-route.post("/agendamento/create", loginRequired, scheduleController.schedule);
-route.get(
-  "/agendamento/edit/:id",
-  loginRequired,
-  scheduleController.editSchedule
-);
+route.post("/agendamento/create", loginRequired, scheduleController.createSchedule);
+route.get("/agendamento/edit/:id", loginRequired, scheduleController.getScheduleToEdit);
+//route.post("/agendamento/edit/:id", loginRequired, scheduleController.edit);
 
 //rota de login/logout
 route.get("/", isLogged, loginController.loginPage);

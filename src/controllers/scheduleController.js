@@ -3,7 +3,7 @@ const Schedule = require("../models/scheduleModel");
 exports.schedulePage = (req, res) => {
   return res.render("schedule");
 };
-exports.schedule = async function (req, res) {
+exports.createSchedule = async function (req, res) {
   try {
     const schedule = new Schedule(req.body);
     await schedule.scheduleCreate();
@@ -24,11 +24,16 @@ exports.schedule = async function (req, res) {
     res.render("error");
   }
 };
-exports.editSchedule = async function (req, res) {
+exports.getScheduleToEdit = async function (req, res) {
   if (!req.params.id) return res.render("error");
   const user = await Schedule.findById(req.params.id);
   if (!user) return res.render("error");
   res.render("schedule", {
     user,
   });
+};
+
+exports.editSchedule = async function (req, res) {
+  if (req.params.id) return res.render("erro");
+  const schedule = new Schedule(req.body);
 };

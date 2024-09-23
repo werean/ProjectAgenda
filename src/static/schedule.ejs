@@ -4,14 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/register.css" />
-    <title>Novo contato</title>
+    <title>Novo agendamento</title>
   </head>
   <body>
     <%- include('includes/nav') %>
     <section class="container">
       <h1 class="text-center">Faça seu agendamento</h1>
-      <%- include('includes/messages') %>
-      <form class="forms" action="/agendamento/create" method="POST">
+      <%- include('includes/messages') %> <% if(user._id) { %>
+      <form
+        class="forms"
+        action="/agendamento/edit/<%= user._id %>"
+        method="POST"
+      >
+        <% } else { %>
+        <form class="forms" action="/agendamento/create" method="POST"></form>
+        <% } %>
         <input
           type="text"
           value="<%= user.name %>"
