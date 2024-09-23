@@ -16,7 +16,10 @@ ul {
 li {
   padding: 0 10px;
 }
-a {
+.nav-link {
   text-decoration: none;
   color: aliceblue;
+}
+a {
+  text-decoration: none;
 }

@@ -1,11 +1,9 @@
-<link rel="stylesheet" href="../css/messages.css" />
+<link rel="stylesheet" href="/css/messages.css" />
 <% if(errors.length > 0){ %>
 <div class="error">
   <% errors.forEach(error => { %> <%= error%><br />
   <% }); %>
 </div>
 <% }%> <% if(success.length > 0){ %>
-<div class="error success">
-  <% success.forEach(successMsg => { %> <%= successMsg%> <% }); %>
-</div>
+<div class="error success"><% success.forEach(successMsg => { %> <%= successMsg%> <% }); %></div>
 <% }%>

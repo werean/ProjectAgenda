@@ -15,12 +15,12 @@
       </div>
       <%- include('includes/messages') %>
       <form class="forms" action="/" method="post">
-        <input placeholder="Email" type="text" class="user" name="email" />
+        <input placeholder="Email" type="text" class="user form-class" name="email" />
         <input
           placeholder="Senha"
           type="password"
           name="password"
-          class="password"
+          class="password form-class"
         />
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button class="sign-in">Entrar</button>

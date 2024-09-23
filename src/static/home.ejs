@@ -12,33 +12,24 @@
       <div class="header">
         <h1>Seus agendamentos</h1>
       </div>
+
       <div class="responsive-table">
+        <% if(schedules.length > 0) { %>
         <table class="table">
+          <% schedules.forEach(schedules => { %>
           <tr class="custom-border">
-            <td>Lucas</td>
-            <td>11945863252</td>
-            <td>11:30</td>
-            <td>23/09/2024</td>
+            <td><%= schedules.name %></td>
+            <td><%= schedules.phone %></td>
+            <td><%= schedules.hour %></td>
+            <td><%= schedules.date %></td>
+            <td><a class="" href="/agendamento/edit/<%= schedules._id %>">Editar</a></td>
+            <td><a href="/agendamento/delete/<%= schedules._id %>">Deletar</a></td>
           </tr>
-          <tr>
-            <td>Lucas</td>
-            <td>11945863252</td>
-            <td>11:30</td>
-            <td>23/09/2024</td>
-          </tr>
-          <tr>
-            <td>Lucas</td>
-            <td>11945863252</td>
-            <td>11:30</td>
-            <td>23/09/2024</td>
-          </tr>
-          <tr>
-            <td>Lucas</td>
-            <td>11945863252</td>
-            <td>11:30</td>
-            <td>23/09/2024</td>
-          </tr>
+          <% }); %>
         </table>
+        <% } else { %>
+        <p>Ainda não existem agendamentos</p>
+        <% }%>
       </div>
     </div>
     <script type="module" src="./main.js"></script>
