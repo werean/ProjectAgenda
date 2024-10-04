@@ -16,12 +16,9 @@
       <%- include('includes/messages') %>
       <form class="forms" action="/" method="post">
         <input placeholder="Email" type="text" class="user form-class" name="email" />
-        <input
-          placeholder="Senha"
-          type="password"
-          name="password"
-          class="password form-class"
-        />
+        <div class="error-msg"></div>
+        <input placeholder="Senha" type="password" name="password" class="password form-class" />
+
         <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button class="sign-in">Entrar</button>
       </form>
@@ -31,5 +28,6 @@
         <a href="http://">Esqueci a senha</a>
       </div>
     </section>
+    <script type="module" src="/JS/main.js"></script>
   </body>
 </html>

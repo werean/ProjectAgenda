@@ -43,7 +43,7 @@ app.use(express.json()); // aqui eu permito enviar e receber json
 //Configuração de visualização(view engine)
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "src", "static"));
-app.use(express.static(path.resolve(__dirname, "src")));
+app.use(express.static(path.resolve(__dirname, "public")));
 
 //Middleware CSRF(deve ser depois do middleware de sessão)
 app.use(csrf());
