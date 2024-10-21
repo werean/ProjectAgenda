@@ -3,7 +3,8 @@ exports.middlewareGlobal = (req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.user = req.session.user;
   res.locals.path = req.path;
-  
+  res.locals.date = new Date();
+
   next();
 };
 

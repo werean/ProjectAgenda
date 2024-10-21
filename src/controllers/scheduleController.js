@@ -8,6 +8,7 @@ exports.schedulePage = (req, res) => {
 exports.createSchedule = async function (req, res) {
   try {
     const schedule = new Schedule(req.body);
+
     await schedule.scheduleCreate();
 
     if (schedule.errors.length > 0) {
@@ -19,7 +20,7 @@ exports.createSchedule = async function (req, res) {
     }
     req.flash("success", "Agendamento realizado!");
     req.session.save(function () {
-      res.redirect(`/agendamento/edit/${schedule.schedule._id}`);
+      res.redirect("/home");
       return;
     });
   } catch (e) {
@@ -37,6 +38,7 @@ exports.getScheduleToEdit = async function (req, res) {
   res.render("schedule", {
     // e aqui eu estou passando o valor da variavel schedule para o meu arquivo ejs, para que ele consiga ter acesso aos dados
     schedule,
+    formatDate: Schedule.prototype.formatDate,
   });
 };
 

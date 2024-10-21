@@ -17,12 +17,18 @@ Schedule.findById = async function (id) {
 };
 
 Schedule.prototype.scheduleCreate = async function () {
+
   //tudo que é instanciado associando a classe ao prototype fica armazenado dentro do prototype dessa classe, sendo assim possivel reutilizar todos os metodos da classe sempre que eu criar uma nova instancia dela.
   this.validity();
   if (this.errors.length > 0) return;
+  //this.formatDate()
   this.schedule = await scheduleSchema.create(this.body);
 };
-
+ Schedule.prototype.formatDate = function() {
+   let formatDate = this.body.date.split('-')
+   console.log(formatDate)
+   return this.body.date = `${formatDate[2]}/${formatDate[1]}/${formatDate[0]}`
+ }
 Schedule.prototype.validity = function () {
   this.cleanUp();
   if (!this.body.name || this.body.name.length < 3) {
@@ -39,6 +45,7 @@ Schedule.prototype.validity = function () {
   }
 };
 Schedule.prototype.cleanUp = function () {
+  
   for (const key in this.body) {
     if (typeof this.body[key] !== "string") {
       this.body[key] = "";
@@ -51,6 +58,8 @@ Schedule.prototype.cleanUp = function () {
     date: this.body.date,
   };
 };
+
+
 
 Schedule.prototype.edit = async function (id) {
   if (typeof id !== "string") return;

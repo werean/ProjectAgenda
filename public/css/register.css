@@ -13,7 +13,8 @@
 h1 {
   margin-bottom: 10px;
 }
-input {
+input,
+select {
   display: flex;
   padding: 10px;
   width: 400px;

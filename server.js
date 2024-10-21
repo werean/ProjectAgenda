@@ -32,6 +32,7 @@ const sessionOptions = session({
     httOnly: true,
   },
 });
+
 app.use(sessionOptions);
 app.use(flash());
 

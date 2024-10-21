@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,29 +14,31 @@
       <!-- Aqui nesse form eu estou passando o schedule._id que vem do banco de dados para a url, esse valor sera capturado no req.params.id que esta no controller -->
       <form
         class="forms"
-        action="<%= schedule ? '/agendamento/edit/' + schedule._id : '/agendamento/create' %>"  
+        action="<%= schedule ? '/agendamento/edit/' + schedule._id : '/agendamento/create' %>"
         method="POST"
       >
         <input
+          class="name"
           type="text"
           value="<%= schedule ? schedule.name : user.name  %>"
           name="name"
           placeholder="Nome"
         />
         <input
+          class="number"
           type="number"
           value="<%= schedule ? schedule.phone : user.phone  %>"
           name="phone"
           placeholder="Numero do celular"
         />
+
+        <select class="hour" name="hour">
+          <%- include('includes/hourOptions') %>
+        </select>
+
         <input
-          type="text"
-          value="<%= schedule ? schedule.hour : user.hour  %>"
-          name="hour"
-          placeholder="Horario do agendamento"
-        />
-        <input
-          type="text"
+          class="date"
+          type="date"
           value="<%= schedule ? schedule.date : user.date  %>"
           name="date"
           placeholder="Data do agendamento"
@@ -45,5 +47,6 @@
         <button type="submit">Cadastrar</button>
       </form>
     </section>
+    <script src="./frontend/validityDate.js"></script>
   </body>
 </html>

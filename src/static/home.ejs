@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
     <%- include('includes/nav') %>
     <div class="container">
       <div class="header">
+        <%- include('includes/messages') %>
         <h1>Seus agendamentos</h1>
       </div>
 
@@ -21,7 +22,7 @@
             <td><%= schedules.name %></td>
             <td><%= schedules.phone %></td>
             <td><%= schedules.hour %></td>
-            <td><%= schedules.date %></td>
+            <td><%= new Date(schedules.date).toLocaleDateString('pt-BR') %></td>
             <td><a class="" href="/agendamento/edit/<%= schedules._id %>">Editar</a></td>
             <td><a href="/agendamento/delete/<%= schedules._id %>">Deletar</a></td>
           </tr>
@@ -32,6 +33,6 @@
         <% }%>
       </div>
     </div>
-    <script type="module" src="./main.js"></script>
+    <script src="bundle.js"></script>
   </body>
 </html>
