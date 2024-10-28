@@ -17,7 +17,6 @@ exports.login = async function (req, res) {
     }
     req.session.user = login.user;
     req.session.save(function () {
-      // req.session.save() serve para garantir que qualquer alteração feita na sessão do usuário seja persistida no armazenamento de sessão antes de executar o redirecionamento.
       return console.log(login.errors), res.redirect("/home");
     });
   } catch (e) {

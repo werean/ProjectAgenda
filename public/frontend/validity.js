@@ -24,7 +24,6 @@ export class FormValidity {
     emailError.textContent = "Insira um email valido";
     let error = false;
 
-    // Verifique se o email é válido
     if (!email) {
       div.appendChild(emailError);
       alert("Email inválido.");
@@ -32,17 +31,13 @@ export class FormValidity {
       error = true;
     }
 
-    // Verifique o comprimento da senha
     if (password.value.length < 3 || password.value.length > 50) {
       alert("Senha precisa ter entre 3 e 50 caracteres");
       error = true;
     }
 
-    // Se não houver erro, envie o formulário
     if (!error) {
       element.submit();
     }
   }
 }
-
-// Altere o seletor para o formulário que contém ambos os campos

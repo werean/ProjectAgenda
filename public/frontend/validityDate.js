@@ -35,4 +35,3 @@ function dateValidation(date) {
   }
 }
 validityDate();
-console.log("teste");

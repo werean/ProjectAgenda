@@ -1,9 +1,8 @@
-const validator = require("validator"); //valida email entre outras coisas
-const bcryptjs = require("bcryptjs"); // incripta a senha para nao mandar a senha real para o banco de dados
+const validator = require("validator");
+const bcryptjs = require("bcryptjs");
 const { mongooseModel } = require("./mongoSchemaModel");
 
 class Register {
-  // aqui estou instanciando as coisas que eu vou receber
   constructor(body) {
     this.body = body;
     this.errors = [];
@@ -11,16 +10,16 @@ class Register {
   }
 
   async registerCreate() {
-    this.registerValidation(); //verifico se o email informado é valido
-    if (this.errors.length > 0) return; // se existir erros eu paro a execução
-    await this.emailExist(); //verifico no banco se o email já esta cadastrado
-    if (this.errors.length > 0) return; // verifico novamente se existe erros
-    const salt = bcryptjs.genSaltSync(); //instancio o bcrypt
-    this.body.password = bcryptjs.hashSync(this.body.password, salt); //criptografo a senha com a instancia a cima
-    this.user = await mongooseModel.create(this.body); //crio no banco o que foi informado no body
+    this.registerValidation();
+    if (this.errors.length > 0) return;
+    await this.emailExist();
+    if (this.errors.length > 0) return;
+    const salt = bcryptjs.genSaltSync();
+    this.body.password = bcryptjs.hashSync(this.body.password, salt);
+    this.user = await mongooseModel.create(this.body);
   }
   async emailExist() {
-    const findEmail = await mongooseModel.findOne({ email: this.body.email }); //aqui ele procura na coleção Registered se o this.body.email que está sendo enviado já existe na coleção
+    const findEmail = await mongooseModel.findOne({ email: this.body.email });
     if (findEmail) this.errors.push("E-mail já cadastrado.");
   }
   registerValidation() {
@@ -44,7 +43,6 @@ class Register {
   }
   cleanUp() {
     for (const key in this.body) {
-      //aqui estou transformando tudo que nao for string em string para que ninguem consiga mandar qualquer comando para dentro da aplicação
       if (typeof this.body[key] !== "string") {
         this.body[key] = "";
       }

@@ -29,11 +29,9 @@ exports.isLogged = (req, res, next) => {
 };
 
 exports.loginRequired = (req, res, next) => {
-  // esse middleware verifica se o usuario esta logado
   if (!req.session.user) {
-    //Se o usuario não tiver logado na sessão
-    req.flash("errors", "Você precisa fazer login."); // ele manda uma mensagem de erro para dentro do array de erros
-    req.session.save(() => res.redirect("/")); //salva essa informação disparada pelo req.flash na sessão atual, garantindo que a mensagem seja salva e esteja disponivel na proxima requisição do usuario
+    req.flash("errors", "Você precisa fazer login.");
+    req.session.save(() => res.redirect("/"));
     return;
   }
   next();
