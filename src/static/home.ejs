@@ -22,7 +22,9 @@
             <td><%= schedules.name %></td>
             <td><%= schedules.phone %></td>
             <td><%= schedules.hour %></td>
-            <td><%= new Date(schedules.date).toLocaleDateString('pt-BR') %></td>
+            <td>
+              <%= new Date(schedules.date).toLocaleDateString('pt-BR', { timeZone: 'UTC' }) %>
+            </td>
             <td><a class="" href="/agendamento/edit/<%= schedules._id %>">Editar</a></td>
             <td><a href="/agendamento/delete/<%= schedules._id %>">Deletar</a></td>
           </tr>

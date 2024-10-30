@@ -9,7 +9,6 @@ function Schedule(body) {
 Schedule.findById = async function (id) {
   if (typeof id !== "string") return;
   const schedule = await scheduleSchema.findById(id);
-  console.log(schedule);
   return schedule;
 };
 
@@ -18,11 +17,7 @@ Schedule.prototype.scheduleCreate = async function () {
   if (this.errors.length > 0) return;
   this.schedule = await scheduleSchema.create(this.body);
 };
-Schedule.prototype.formatDate = function () {
-  let formatDate = this.body.date.split("-");
-  console.log(formatDate);
-  return (this.body.date = `${formatDate[2]}/${formatDate[1]}/${formatDate[0]}`);
-};
+
 Schedule.prototype.validity = function () {
   this.cleanUp();
   if (!this.body.name || this.body.name.length < 3) {

@@ -17,7 +17,7 @@ exports.login = async function (req, res) {
     }
     req.session.user = login.user;
     req.session.save(function () {
-      return console.log(login.errors), res.redirect("/home");
+      return res.redirect("/home");
     });
   } catch (e) {
     console.log(e);

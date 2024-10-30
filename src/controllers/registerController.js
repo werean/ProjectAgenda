@@ -10,7 +10,7 @@ exports.register = async function (req, res) {
     if (register.errors.length > 0) {
       req.flash("errors", register.errors);
       req.session.save(function () {
-        return console.log(register.errors), res.redirect("/register");
+        return res.redirect("/register");
       });
       return;
     }

@@ -4,8 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js --ignore public --ignore frontend",
-    "dev": "webpack -w"
+    "dev": "nodemon server.js --ignore public --ignore frontend"
   },
   "keywords": [],
   "author": "",
@@ -23,8 +22,7 @@
     "express-session": "^1.18.0",
     "helmet": "^7.1.0",
     "mongoose": "^8.6.2",
-    "validator": "^13.12.0",
-    "webpack": "^5.95.0"
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",

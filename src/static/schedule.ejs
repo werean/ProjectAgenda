@@ -31,9 +31,13 @@
           placeholder="Numero do celular"
         />
 
-        <select class="hour" name="hour">
-          <%- include('includes/hourOptions') %>
-        </select>
+        <input
+          class="hour"
+          type="time"
+          value="<%= schedule ? schedule.time : user.time  %>"
+          name="hour"
+          placeholder="Data do agendamento"
+        />
 
         <input
           class="date"

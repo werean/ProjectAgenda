@@ -14,7 +14,7 @@ exports.createSchedule = async function (req, res) {
     if (schedule.errors.length > 0) {
       req.flash("errors", schedule.errors);
       req.session.save(function () {
-        return console.log(schedule.errors), res.redirect("/agendamento");
+        return res.redirect("/agendamento");
       });
       return;
     }
@@ -31,7 +31,6 @@ exports.createSchedule = async function (req, res) {
 exports.getScheduleToEdit = async function (req, res) {
   if (!req.params.id) return res.render("error");
   const schedule = await Schedule.findById(req.params.id);
-  console.log(req.params.id);
 
   if (!schedule) return res.render("error");
 
