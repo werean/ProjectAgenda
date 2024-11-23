@@ -5,7 +5,6 @@ const route = require("./routes");
 const app = express();
 const session = require("express-session");
 const flash = require("connect-flash");
-const helmet = require("helmet");
 const csrf = require("csurf");
 const {
   checkCsrfError,
@@ -20,7 +19,7 @@ mongoose
     app.emit("pronto");
   })
   .catch((e) => console.log(e));
-app.use(helmet());
+
 
 const sessionOptions = session({
   secret: "este é meu secret",
@@ -53,7 +52,7 @@ app.use(route);
 app.use(checkCsrfError);
 
 app.on("pronto", () => {
-  app.listen(8080, () => {
+  app.listen(8080,'0.0.0.0', () => {
     console.log("Server running: http://localhost:8080");
   });
 });
